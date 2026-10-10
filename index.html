@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DaisyHaven Bedding — Home Essentials</title>
+  <!-- Google Fonts for Serif & Modern Sans Headers -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-color: #fdfbf7;
+      --text-color: #2b2b2b;
+      --muted-text: #666666;
+      --accent-color: #4a5d4e;
+      --dark-bg: #1c2820;
+      --dark-text: #f4f1ea;
+      --border-color: #e2ded7;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ------------------------------------
+       LEFT FIXED SIDEBAR NAVIGATION
+    ------------------------------------ */
+    aside.sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 100vh;
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--border-color);
+      background-color: var(--bg-color);
+      z-index: 100;
+    }
+
+    .branding .brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-color);
+      letter-spacing: -0.5px;
+    }
+
+    .branding .brand-title .bedding-text {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--accent-color);
+      display: block;
+      margin-top: -4px;
+    }
+
+    .branding .subtitle {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted-text);
+      margin-top: 8px;
+    }
+
+    .nav-links {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .nav-links li {
+      margin-bottom: 1.25rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+      display: inline-block;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+      transform: translateX(4px);
+    }
+
+    .social-footer {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .social-footer a {
+      color: var(--text-color);
+      font-size: 1.3rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-footer a:hover {
+      color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    /* ------------------------------------
+       MAIN CONTENT CONTAINER
+    ------------------------------------ */
+    main.main-content {
+      margin-left: 280px;
+      flex: 1;
+      width: calc(100% - 280px);
+    }
+
+    section {
+      padding: 5rem 4rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    /* ------------------------------------
+       1. PORTFOLIO SECTION ("WORK")
+    ------------------------------------ */
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 400;
+    }
+
+    /* Bento Box Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+
+    .bento-card {
+      position: relative;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+    }
+
+    .bento-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .bento-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .bento-card-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+      color: #ffffff;
+    }
+
+    .bento-card-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    .bento-card-info p {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Bento Grid Spans */
+    .card-large { grid-column: span 8; }
+    .card-medium { grid-column: span 4; }
+    .card-full { grid-column: span 12; }
+    .card-half { grid-column: span 6; }
+
+    /* ------------------------------------
+       2. ABOUT SECTION ("01 — ABOUT")
+    ------------------------------------ */
+    .headline-large {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 3.5rem;
+      color: var(--text-color);
+    }
+
+    .headline-large em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent-color);
+    }
+
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .about-media-box {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      background: #eee;
+    }
+
+    .about-media-box video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .about-text p {
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      color: var(--muted-text);
+      line-height: 1.7;
+    }
+
+    /* ------------------------------------
+       3. SERVICES SECTION ("02 — SERVICES")
+    ------------------------------------ */
+    .services-list {
+      margin-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 80px 1.5fr 2fr;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+      align-items: start;
+    }
+
+    .service-index {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+
+    .service-title {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 600;
+      padding-right: 1rem;
+    }
+
+    .service-desc {
+      color: var(--muted-text);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ------------------------------------
+       4. FOOTER / CONTACT SECTION
+    ------------------------------------ */
+    section.contact-section {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+      border-bottom: none;
+      padding: 6rem 4rem;
+    }
+
+    .contact-section .section-label {
+      color: #a3b8a6;
+    }
+
+    .contact-pitch {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      line-height: 1.2;
+      max-width: 800px;
+      margin-bottom: 3rem;
+    }
+
+    .contact-timeline {
+      font-size: 1rem;
+      color: #c2c9c3;
+      margin-bottom: 3rem;
+    }
+
+    .contact-ctas {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-instagram {
+      background-color: #ffffff;
+      color: var(--dark-bg);
+    }
+
+    .btn-instagram:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: #ffffff;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #20bd5a;
+      transform: translateY(-2px);
+    }
+
+    /* ------------------------------------
+       MODAL OVERLAY & CONTENT
+    ------------------------------------ */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+      padding: 2rem;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--bg-color);
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      border-radius: 16px;
+      overflow-y: auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      z-index: 10;
+      transition: background 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: #eee;
+    }
+
+    .modal-gallery {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #ffffff;
+    }
+
+    .modal-gallery img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .modal-details {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .modal-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-title {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .modal-features {
+      margin-bottom: 1.5rem;
+      list-style-position: inside;
+      color: var(--muted-text);
+      font-size: 0.95rem;
+    }
+
+    .modal-features li {
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.25rem;
+    }
+
+    /* ------------------------------------
+       RESPONSIVE DESIGN (MEDIA QUERIES)
+    ------------------------------------ */
+    @media (max-width: 1024px) {
+      aside.sidebar {
+        width: 220px;
+        padding: 2rem 1.5rem;
+      }
+      main.main-content {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+      }
+      section {
+        padding: 4rem 2rem;
+      }
+      .bento-card-info h3 {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      aside.sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 2rem;
+      }
+      main.main-content {
+        margin-left: 0;
+        width: 100%;
+      }
+      .card-large, .card-medium, .card-half, .card-full {
+        grid-column: span 12;
+      }
+      .about-split {
+        grid-template-columns: 1fr;
+      }
+      .service-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+      .modal-card {
+        grid-template-columns: 1fr;
+      }
+      .headline-large {
+        font-size: 2.5rem;
+      }
+      .contact-pitch {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIXED LEFT SIDEBAR NAVIGATION -->
+  <aside class="sidebar">
+    <div class="branding">
+      <h1 class="brand-title">
+        DaisyHaven 
+        <span class="bedding-text">Bedding</span>
+      </h1>
+      <p class="subtitle">Home essentials</p>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#work">WORK</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#services">SERVICES</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+
+    <div class="social-footer">
+      <a href="https://www.instagram.com/daisyhaven_bedding?utm_source=ig_web_button_share_sheet&cplk=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/255719936620" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="main-content">
+
+    <!-- 1. PORTFOLIO SECTION ("WORK") -->
+    <section id="work">
+      <span class="section-label">PORTFOLIO</span>
+      <div class="section-header">
+        <h2 class="section-title">Selected Collection</h2>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Product 1 -->
+        <article class="bento-card card-large" onclick="openModal('modal-1')">
+          <img src="https://i.pinimg.com/736x/31/d0/c3/31d0c31270dd8db6110b0cfb3d27b47c.jpg" alt="Burgundy Floral Botanical Bed Sheet Set">
+          <div class="bento-card-info">
+            <h3>Burgundy Floral Botanical Bed Sheet Set</h3>
+            <p>Home / Bedding / Bed Sheet Sets</p>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="bento-card card-medium" onclick="openModal('modal-2')">
+          <img src="https://i.pinimg.com/736x/37/31/1f/37311fcb1a9ced9b06ec0965f2cb5782.jpg" alt="Modern Floral Cosmos Bedding Set">
+          <div class="bento-card-info">
+            <h3>Modern Floral Cosmos Bedding Set</h3>
+            <p>Home / Bedding / Bed Sheet Sets</p>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="bento-card card-half" onclick="openModal('modal-3')">
+          <img src="https://i.pinimg.com/736x/72/66/b3/7266b344c545def2c07460a1ff6eba73.jpg" alt="Abstract Purple Floral & Warm Ochre Bedding Set">
+          <div class="bento-card-info">
+            <h3>Abstract Purple Floral & Warm Ochre Bedding Set</h3>
+            <p>Home / Bedding / Bed Sheet Sets</p>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="bento-card card-half" onclick="openModal('modal-4')">
+          <img src="https://i.pinimg.com/1200x/fc/04/6b/fc046b98a559ee737def3890742a7d97.jpg" alt="Red Ribbed Stripe Cotton Bath Towel Set">
+          <div class="bento-card-info">
+            <h3>Red Ribbed Stripe Cotton Bath Towel Set</h3>
+            <p>Home / Towel Sheet Sets</p>
+          </div>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="bento-card card-full" onclick="openModal('modal-5')">
+          <img src="https://i.pinimg.com/736x/ff/7a/f4/ff7af41d48034bcc5e59722da260e114.jpg" alt="Luxury Plush Cotton Bath Towels">
+          <div class="bento-card-info">
+            <h3>Luxury Plush Cotton Bath Towels</h3>
+            <p>Home / Towel Sets</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT SECTION ("01 — ABOUT") -->
+    <section id="about">
+      <span class="section-label">01 — ABOUT</span>
+      <h2 class="headline-large">Pure Comfort, <em>Crafted for Your Home</em></h2>
+      
+      <div class="about-split">
+        <div class="about-media-box">
+          <video autoplay loop muted playsinline poster="https://i.pinimg.com/736x/31/d0/c3/31d0c31270dd8db6110b0cfb3d27b47c.jpg">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-folding-soft-cotton-towels-41525-large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="about-text">
+          <p>At DaisyHaven Bedding, we believe that every great day begins with a restful night's sleep and every relaxing bath should end in everyday luxury.</p>
+          <p>We were founded with a single mission: to bring authentic, high-grade textiles into your home so your family can experience true comfort every single day.</p>
+          <p>Specializing in Grade A pure cotton, our collection is curated for softness, durability, and elegance. From crisp, breathable bedsheets and colorful kids' bedding to cloud-soft pillows and ultra-absorbent towels, we provide complete linen solutions built to elevate your sanctuary.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SERVICES SECTION ("02 — SERVICES") -->
+    <section id="services">
+      <span class="section-label">02 — SERVICES</span>
+      <h2 class="section-title">What DaisyHaven got for you</h2>
+
+      <div class="services-list">
+        <!-- Service Item 1 -->
+        <div class="service-row">
+          <span class="service-index">01</span>
+          <h3 class="service-title">Design & Styling Consultations</h3>
+          <p class="service-desc">Helping customers choose matching colors, textures, and layers (sheets, duvet covers, throw pillows, blankets) to fit their bedroom design or color theme.</p>
+        </div>
+
+        <!-- Service Item 2 -->
+        <div class="service-row">
+          <span class="service-index">02</span>
+          <h3 class="service-title">Customization & Personalization</h3>
+          <p class="service-desc">Personalizing pillowcases, sheets, or towels with initials or custom text for that personal touch or gift.</p>
+        </div>
+
+        <!-- Service Item 3 -->
+        <div class="service-row">
+          <span class="service-index">03</span>
+          <h3 class="service-title">Care & Maintenance Education</h3>
+          <p class="service-desc">Providing tailored advice on how to wash, iron, and store high-grade bedding to extend its lifetime and preserve optimum softness.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FOOTER / CONTACT SECTION ("04 — CONTACT") -->
+    <section id="contact" class="contact-section">
+      <span class="section-label">04 — CONTACT</span>
+      <h2 class="contact-pitch">Your comfort is always our priority. Reach out anytime, or visit us again soon.</h2>
+      <p class="contact-timeline">We typically respond within a few hours to help you curate your ideal bedding experience.</p>
+      
+      <div class="contact-ctas">
+        <a href="https://www.instagram.com/daisyhaven_bedding?utm_source=ig_web_button_share_sheet&cplk=ZDNlZDc0MzIxNw==" target="_blank" class="btn-contact btn-instagram">
+          <i class="fa-brands fa-instagram"></i> Connect on Instagram
+        </a>
+        <a href="https://wa.me/255719936620" target="_blank" class="btn-contact btn-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PORTFOLIO PRODUCT MODALS -->
+  
+  <!-- Modal 1 -->
+  <div class="modal-overlay" id="modal-1">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('modal-1')">&times;</button>
+      <div class="modal-gallery">
+        <img src="https://i.pinimg.com/736x/31/d0/c3/31d0c31270dd8db6110b0cfb3d27b47c.jpg" alt="Burgundy Floral Botanical Bed Sheet Set">
+      </div>
+      <div class="modal-details">
+        <span class="modal-category">Home / Bedding / Bed Sheet Sets</span>
+        <h3 class="modal-title">Burgundy Floral Botanical Bed Sheet Set</h3>
+        <ul class="modal-features">
+          <li>White background with burgundy flowers and deep green foliage motifs</li>
+          <li>Includes matching sheet and pillowcase set</li>
+          <li>Soft and breathable pure cotton material</li>
+        </ul>
+        <p class="modal-description">Add a splash of color to your home with this burgundy floral cotton bedding set. Designed with charming flower motifs on pure white cotton, it adds immediate cheer and comfort to your bedroom.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="modal-overlay" id="modal-2">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('modal-2')">&times;</button>
+      <div class="modal-gallery">
+        <img src="https://i.pinimg.com/736x/37/31/1f/37311fcb1a9ced9b06ec0965f2cb5782.jpg" alt="Modern Floral Cosmos Bedding Set">
+      </div>
+      <div class="modal-details">
+        <span class="modal-category">Home / Bedding / Bed Sheet Sets</span>
+        <h3 class="modal-title">Modern Floral Cosmos Bedding Set</h3>
+        <ul class="modal-features">
+          <li>Vibrant plum/purple, peach, and cream floral illustrations</li>
+          <li>Crisp white background with lush botanical leaf accents</li>
+          <li>Soft pure cotton fabric</li>
+          <li>Includes bed sheet and matching pillowcases</li>
+        </ul>
+        <p class="modal-description">Brighten your space with this expressive botanical print bed sheet set. Featuring oversized floral motifs in rich plum and warm peach tones, it turns your bed into an inviting centerpiece.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="modal-overlay" id="modal-3">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('modal-3')">&times;</button>
+      <div class="modal-gallery">
+        <img src="https://i.pinimg.com/736x/72/66/b3/7266b344c545def2c07460a1ff6eba73.jpg" alt="Abstract Purple Floral & Warm Ochre Bedding Set">
+      </div>
+      <div class="modal-details">
+        <span class="modal-category">Home / Bedding / Bed Sheet Sets</span>
+        <h3 class="modal-title">Abstract Purple Floral & Warm Ochre Bedding Set</h3>
+        <ul class="modal-features">
+          <li>Bold purple lily illustration set against a warm ochre yellow background</li>
+          <li>Premium pure cotton fabric</li>
+          <li>Matching sheet and pillowcase set</li>
+          <li>Artistic, vibrant statement piece for bedroom decor</li>
+        </ul>
+        <p class="modal-description">Make a bold statement with this artistic floral bed set. Featuring dramatic purple lily graphics over a soft ochre background, this pure cotton set combines artful design with premium everyday comfort.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div class="modal-overlay" id="modal-4">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('modal-4')">&times;</button>
+      <div class="modal-gallery">
+        <img src="https://i.pinimg.com/1200x/d4/12/17/d41217b0588f9f12eb17d055b030b388.jpg" alt="Assorted Towel Set Red">
+        <img src="https://i.pinimg.com/1200x/fc/04/6b/fc046b98a559ee737def3890742a7d97.jpg" alt="Ribbed Stripe Bath Towel">
+      </div>
+      <div class="modal-details">
+        <span class="modal-category">Home / Towel Sheet Sets</span>
+        <h3 class="modal-title">Red Ribbed Stripe Cotton Bath Towel Set</h3>
+        <ul class="modal-features">
+          <li><strong>Product 1:</strong> Assorted Towel Set Red</li>
+          <li><strong>Product 2:</strong> Ribbed Stripe Bath Towel</li>
+          <li>Bold red warm tone</li>
+          <li>Highly absorbent bath towels</li>
+          <li>Premium pure cotton</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5 -->
+  <div class="modal-overlay" id="modal-5">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal('modal-5')">&times;</button>
+      <div class="modal-gallery">
+        <img src="https://i.pinimg.com/736x/ff/7a/f4/ff7af41d48034bcc5e59722da260e114.jpg" alt="Luxury Plush Cotton Bath Towels">
+      </div>
+      <div class="modal-details">
+        <span class="modal-category">Home / Towel Sets</span>
+        <h3 class="modal-title">Luxury Plush Cotton Bath Towels</h3>
+        <ul class="modal-features">
+          <li>All colour background options available</li>
+          <li>Soft pure cotton material leaving you completely dry</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT FOR INTERACTIVE MODALS -->
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside content box
+    window.addEventListener('click', function(e) {
+      document.querySelectorAll('.modal-overlay').forEach(modal => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
